@@ -1,0 +1,12 @@
+firedux(
+fd-object-ref="{{$ctrl.ref}}"
+fd-on-data="subtitle=$data")
+
+.subtitle-wrapper(
+layout="column"
+layout-align="center center")
+  
+  wc-text.subtitle(
+  data="subtitle.subtitle"
+  placeholder="Subtitle"
+  on-update="subtitle.subtitle=$data;subtitle.$save()")

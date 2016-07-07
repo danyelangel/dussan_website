@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+  head
+    title Iluminaci&oacute;n Jaime Dussan
+    meta(name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(href='https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900' rel='stylesheet' type='text/css')
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet" type="text/css")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.0-rc.5/angular-material.min.css" rel="stylesheet" type="text/css")
+  body
+
+    script(src="https://www.gstatic.com/firebasejs/3.0.5/firebase.js")
+    script.
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAwgonfVGpmNr2TNb8RAB8bIWZPHiYK5uI",
+        authDomain: "dussan-website.firebaseapp.com",
+        databaseURL: "https://dussan-website.firebaseio.com",
+        storageBucket: "dussan-website.appspot.com",
+      };
+      firebase.initializeApp(config);
+      (function auth() {
+        var email = 'danyelangel@hotmail.com',
+            password = window.prompt('Introduzca contraseña');
+        firebase.auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(function () {
+            window.location.href = document.location.origin;
+          })
+          .catch(auth);
+      })();

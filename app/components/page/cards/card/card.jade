@@ -1,0 +1,49 @@
+firedux(
+fd-object-ref="{{$ctrl.ref}}"
+fd-on-data="card=$data")
+
+edit-toolbar(ng-if="$ctrl.authData")
+  md-button.md-icon-button(
+  ng-click="card.$remove()")
+    md-icon|delete
+
+.card-wrapper
+  
+  div(
+  layout="row"
+  layout-align="space-around center"
+  layout-wrap
+  layout-padding)
+    
+    div.no-spacing-bottom(
+    flex="100"
+    flex-gt-xs="45"
+    flex-order-gt-xs="{{$ctrl.isEven ? 1 : 3}}"
+    layout-margin)
+      
+      wc-media(
+      data="card.media"
+      dimensions="{width:600}"
+      on-update="card.media=$data;card.$save()")
+    
+    div.no-spacing-top(
+    flex="100"
+    flex-gt-xs="45"
+    flex-order-gt-xs="2"
+    layout-margin)
+      
+      wc-text.card-title(
+      data="card.title"
+      placeholder="Title"
+      on-update="card.title=$data;card.$save()")
+      
+      wc-text.card-text(
+      data="card.text"
+      is-rich="true"
+      placeholder="Description"
+      on-update="card.text=$data;card.$save()")
+      
+      md-button(
+      ng-if="$ctrl.pageId"
+      ui-sref="page({pageId:$ctrl.pageId})")
+        |Ver más

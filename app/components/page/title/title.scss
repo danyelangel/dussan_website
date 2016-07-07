@@ -1,0 +1,42 @@
+page-title {
+  .page-title-wrapper {
+    position: relative;
+    height: 50vh;
+    width: 100%;
+    color: #fff;
+  }
+  .page-title-wrapper.isHome {
+    height: 100vh;
+  }
+  .absolute-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.25);
+  }
+  wc-media {
+    width: 100%;
+    height: 100%;
+  }
+  .page-title-title {
+    font-size: 4em;
+    font-weight: 700;
+    text-shadow: 0 2px 30px rgba(0,0,0,.5);
+  }
+  @media(max-width: 600px) {
+    .page-title-title {
+      font-size: 3em;
+    }
+  }
+  .page-title-subtitle {
+    font-size: 1.5em;
+    font-weight: 300;
+    text-shadow: 0 2px 8px rgba(0,0,0,.75);
+  }
+  .page-title-title, .page-title-subtitle {
+    text-align: center;
+    margin: 0 .5em;
+  }
+}

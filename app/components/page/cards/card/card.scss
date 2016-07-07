@@ -1,0 +1,23 @@
+page-cards-card {
+  position: relative;
+  .card-title {
+    font-weight: 700;
+    font-size: 2em;
+  }
+  .card-text {
+    font-size: 1em;
+  }
+  @media(max-width: 600px){
+    .card-title {
+      font-size: 1.5em;
+    }
+    .no-spacing-top {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    .no-spacing-bottom {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+div(layout="row" flex)
+  md-sidenav(
+  layout="column"
+  md-component-id="sidenav"
+  md-whiteframe="4")
+    md-toolbar
+      h1.md-toolbar-tools|Menu
+    md-content(flex)
+      wc-menu(auth-data="$ctrl.authData")
+  div(layout="column" flex)
+  
+    md-content#main(flex)
+      nav-el.fixed(
+      layout="row" 
+      layout-align="center center"
+      ng-class="{hasScrolled: $ctrl.hasScrolled, 'md-whiteframe-3dp': $ctrl.hasScrolled}")
+
+      ui-view
+
+      footer-el

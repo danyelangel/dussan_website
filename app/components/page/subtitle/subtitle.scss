@@ -1,0 +1,18 @@
+page-subtitle {
+  display: block;
+  border-bottom: 1px solid #BDBDBD;
+  .subtitle-wrapper {
+    margin: 5em 2em;
+  }
+  .subtitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5em;
+    max-width: 600px;
+  }
+  @media(max-width:600px) {
+    .subtitle {
+      font-size: 1.25em;
+    }
+  }
+}

@@ -1,0 +1,157 @@
+firedux(
+ng-init="items={}"
+fd-object-ref="nav"
+fd-on-data="nav=$data")
+  
+  md-list
+
+    firedux(
+    fd-array-ref="nav/menu"
+    fd-on-data="menu=$data")
+      
+      .category-wrapper(
+      ng-repeat="($catIndex, category) in menu")
+      
+        firedux(
+        fd-array-ref="nav/menu/{{category.$id}}/menu"
+        fd-on-data="items=$data")
+        
+          md-list-item(
+          ng-click="!$ctrl.editing[$index] ? collapsed=!collapsed : null")
+
+            wc-text(
+            flex
+            ng-click="!$ctrl.editing[$index] ? collapsed=!collapsed : null"
+            style="padding: .25em;font-weight:700"
+            data="category.title"
+            placeholder="Title"
+            on-update="category.title=$data;menu.$save($index);"
+            disable-editing="!$ctrl.editing[$index]")
+
+            md-button.md-secondary.md-icon-button(
+            ng-show="$ctrl.editing[$index]"
+            ng-click="$ctrl.editing[$index]=false"
+            aria-label="done")
+              md-icon|done
+
+            //md-button.md-secondary.md-icon-button(
+              ng-hide="editing"
+              ng-click="editing=true"
+              aria-label="done")
+                md-icon|edit
+
+            md-icon.md-secondary(
+            aria-label="expand")
+              |{{!collapsed?'keyboard_arrow_down':'keyboard_arrow_up'}}
+
+            md-menu.md-secondary(
+            md-position-mode="target-right target"
+            ng-if="!$ctrl.editing[$index] && $ctrl.authData")
+            
+              md-button.md-icon-button(
+              ng-click="$mdOpenMenu($event)"
+              aria-label="more")
+                md-icon(md-menu-origin)|more_vert
+
+              md-menu-content(width="3")
+                
+                md-menu-item
+                  md-button(
+                  ng-click="$ctrl.editing[$index]=true")
+                    div(layout="row" flex)
+                      p(flex)|Edit
+                      md-icon(md-menu-align-target)
+                        |edit
+                
+                md-menu-divider
+                
+                md-menu-item
+                  md-button(
+                  ng-click="$ctrl.removeOnDestroy[$catIndex]=true;menu.$remove($index);")
+                    div(layout="row" flex)
+                      p(flex)|Delete
+                      md-icon(md-menu-align-target)
+                        |delete
+                
+
+
+          wc-collapsed(
+          is-collapsed="!collapsed"
+          vertical-only="true"
+          watcher="items.length")
+
+            firedux(
+            ng-repeat="item in items"
+            fd-object-ref="pages/{{item.$id}}"
+            fd-on-data="page=$data"
+            fd-remove-on-destroy="$ctrl.removeOnDestroy[$catIndex]")
+
+              md-list-item(
+              ng-mouseenter="hover=true"
+              ng-mouseleave="hover=false"
+              ui-sref="page({pageId:item.$id})"
+              ng-if="$ctrl.authData || item.title")
+
+                wc-text(
+                flex
+                ui-sref="page({pageId:item.$id})"
+                disable-editing="!$ctrl.itemEditing[item.$id] && item.title"
+                style="margin-left: 1em"
+                data="item.title"
+                placeholder="Title"
+                on-update="item.title=$data;items.$save($index);page.exists=true;page.$save();$ctrl.itemEditing[item.$id]=false")
+
+                md-button.md-secondary.md-icon-button(
+                ng-show="$ctrl.itemEditing[item.$id]"
+                ng-click="$ctrl.itemEditing[item.$id]=false"
+                aria-label="done")
+                  md-icon|done
+
+                md-menu.md-secondary(
+                ng-hide="$ctrl.itemEditing[item.$id] || !$ctrl.authData"
+                md-position-mode="target-right target")
+
+                  md-button.md-icon-button(
+                  ng-click="$mdOpenMenu($event)"
+                  aria-label="more")
+                    md-icon(md-menu-origin)|more_vert
+
+                  md-menu-content(width="3")
+
+                    md-menu-item
+                      md-button(
+                      ng-click="$ctrl.itemEditing[item.$id]=true")
+                        div(layout="row" flex)
+                          p(flex)|Settings
+                          md-icon(md-menu-align-target)
+                            |settings
+
+                    md-menu-item
+                      md-button(
+                      ng-click="$ctrl.itemEditing[item.$id]=true")
+                        div(layout="row" flex)
+                          p(flex)|Edit title
+                          md-icon(md-menu-align-target)
+                            |edit
+
+                    md-menu-divider
+                    
+                    md-menu-item
+                      md-button(
+                      ng-click="items.$remove($index);page.$remove()")
+                        div(layout="row" flex)
+                          p(flex)|Delete
+                          md-icon(md-menu-align-target)
+                            |delete
+                  
+            md-list-item(
+            ng-if="$ctrl.authData"
+            ng-click="items.$add({exists:true})")
+              md-icon(style="margin-left: 1em")|add
+              p|Add Item
+    
+    md-list-item(
+    ng-if="$ctrl.authData"
+    ng-click="menu.$add({exists:true})")
+      md-icon|add
+      p|Add Category

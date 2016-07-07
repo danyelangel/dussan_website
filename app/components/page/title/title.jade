@@ -1,0 +1,25 @@
+firedux(
+fd-object-ref="{{$ctrl.ref}}"
+fd-on-data="title=$data")
+
+.page-title-wrapper(
+layout="column" 
+layout-align="center center"
+ng-class="{isHome: $ctrl.isHome}")
+
+  .absolute-background
+    wc-media(
+    data="title.background"
+    is-background="true"
+    dimensions="{width:1920,height:1080}"
+    on-update="title.background=$data;title.$save()")
+    
+  wc-text.page-title-title(
+  data="title.title"
+  placeholder="Title"
+  on-update="title.title=$data;title.$save()")
+  
+  wc-text.page-title-subtitle(
+  data="title.subtitle"
+  placeholder="Subtitle"
+  on-update="title.subtitle=$data;title.$save()")

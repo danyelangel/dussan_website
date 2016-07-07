@@ -1,0 +1,21 @@
+firedux(
+fd-array-ref="{{$ctrl.ref}}"
+fd-on-data="cards=$data")
+
+.cards-wrapper(
+flex
+layout="row"
+layout-align="center stretch"
+layout-wrap)
+    
+  page-cards-card(
+  flex="100"
+  ng-repeat="card in cards"
+  ref="{{$ctrl.ref}}/{{card.$id}}"
+  auth-data="$ctrl.authData"
+  is-even="$even")
+  
+  .add-card(
+  ng-if="$ctrl.authData"
+  ng-click="cards.$add({exists:true})")
+    md-icon|add

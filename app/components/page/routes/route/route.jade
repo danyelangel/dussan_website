@@ -1,0 +1,29 @@
+.route-wrapper(
+ng-mouseenter="hover=true"
+ng-mouseleave="hover=false"
+layout="column"
+layout-align="center")
+  
+  div(
+  layout="column"
+  layout-align="center center"
+  ng-hide="hover")
+
+    editable-media(
+    media="$ctrl.media")
+
+    editable-text.route-title(
+    text="$ctrl.title")
+
+  div(
+  layout="column"
+  layout-align="center center"
+  ng-show="hover")
+
+    editable-text.route-text(
+    text="$ctrl.text"
+    is-rich="true")
+
+    md-button(
+    ui-sref="page({pageId:$ctrl.pageId})")
+      |Ver más

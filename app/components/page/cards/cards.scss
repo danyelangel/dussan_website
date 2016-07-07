@@ -1,0 +1,14 @@
+page-cards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .cards-wrapper {
+    max-width: 1024px;
+    margin: 5em 0;
+  }
+  .add-card {
+    cursor: pointer;
+    padding: .25em;
+  }
+}

@@ -1,0 +1,81 @@
+firedux(
+ng-init="items={}"
+fd-object-ref="nav"
+fd-on-data="nav=$data"
+layout="row"
+layout-align="center center")
+
+.nav-wrapper(
+layout="row")
+
+  md-button.md-icon-button.menu-btn(
+  ng-if="$ctrl.authData"
+  md-theme="dark"
+  ng-click="$ctrl.toggleMenu()")
+    md-icon|menu
+    
+  md-button.md-icon-button.menu-btn(
+  ng-if="!$ctrl.authData"
+  hide-gt-sm
+  md-theme="dark"
+  ng-click="$ctrl.toggleMenu()")
+    md-icon|menu
+
+  wc-media.logo(
+  data="nav.logo"
+  dimensions="{height: 64}"
+  on-click="$ctrl.goToHome();$ctrl.collapsed=false"
+  on-update="nav.logo=$data;nav.$save()")
+
+  div(flex)
+
+  firedux(
+  fd-array-ref="nav/menu"
+  fd-on-data="menu=$data")
+
+  .menu(
+  hide-xs
+  hide-sm
+  layout="row")
+
+    .menu-category(
+    layout="column"
+    ng-repeat="($index, category) in menu")
+
+      .menu-title(
+      layout="row")
+
+        a.menu-title-text(
+        ng-click="$ctrl.collapsed=!$ctrl.collapsed"
+        href="javascript:void(0)")
+          |{{category.title}}
+
+      firedux(
+      fd-array-ref="nav/menu/{{category.$id}}/menu"
+      fd-relationship="pages"
+      fd-on-data="items=$data")
+
+      wc-collapsed(
+      is-collapsed="!$ctrl.collapsed"
+      watcher="items")
+        .menu-items(
+        layout="column")
+
+          .menu-item(
+          layout="row"
+          ng-repeat="item in items")
+
+            a.menu-item-text(
+            ng-click="$ctrl.collapsed=false"
+            ui-sref="page({pageId:item.$id})")
+              |{{item.title}}
+                  
+  md-button.md-icon-button.menu-btn(
+  ng-if="$ctrl.authData"
+  md-theme="dark"
+  ng-click="$ctrl.logout()")
+    md-icon|exit_to_app
+    
+.backdrop(
+ng-show="$ctrl.collapsed"
+ng-click="$ctrl.collapsed=false")

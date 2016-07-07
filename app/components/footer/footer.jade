@@ -1,0 +1,37 @@
+firedux(
+fd-object-ref="footer"
+fd-on-data="footer=$data")
+
+.footer-wrapper(
+flex
+layout="row"
+layout-align="space-between end"
+layout-align-xs="center center"
+layout-xs="column")
+  
+  .company(layout="column" flex="noshrink")
+  
+    wc-media.logo(
+    data="footer.logo"
+    dimensions="{height: 100}"
+    on-update="footer.logo=$data;footer.$save()")
+    
+    wc-text.address(
+    data="footer.address"
+    placeholder="Address"
+    is-rich="true"
+    on-update="footer.address=$data;footer.$save()")
+    
+  .contact(layout="column" flex="noshrink")
+    
+    wc-text.phone(
+    data="footer.phone"
+    placeholder="Phone"
+    is-rich="true"
+    on-update="footer.phone=$data;footer.$save()")
+    
+    wc-text.email(
+    data="footer.email"
+    placeholder="Email"
+    wc-href="mailto:{{footer.email}}"
+    on-update="footer.email=$data;footer.$save()")

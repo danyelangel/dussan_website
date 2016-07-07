@@ -1,0 +1,62 @@
+{
+  sections: {
+    services,
+    work,
+    about,
+    contact
+  },
+  splash: {
+    mainTitle: 'We make events come alive',
+    video: {
+      videoSrc: 'plop',
+      videoRef: 'ploap'
+    }
+  },
+  services: {
+    
+    desarrollo: {
+      title: 'Desarrollo de eventos',
+      subtitle: 'Plop',
+      sections: [
+        {
+          image,
+          title,
+          content
+        }
+      ]
+    },
+    contratacion: {
+      title: 'Contratación de artistas'
+    },
+    alquiler: {
+      title: 'Alquiler y venta de equipos'
+    },
+    logistica: {
+      title: 'Logística y seguridad'
+    }
+  },
+  work: {
+    menuTitle: 'Portafolio',
+    title: 'Nuestro portafolio',
+    subtitle: 'Plop',
+    sections: [
+      {
+        image,
+        title,
+        content
+      }
+    ]
+  },
+  about: {
+    sections: [
+      {
+        image: {
+          imageSrc: 'googe.com',
+          imageRef: 'ploap'
+        },
+        title: 'Vision',
+        content: '<p>plop</p>'
+      }
+    ]
+  }
+}

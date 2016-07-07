@@ -1,0 +1,15 @@
+.routes-wrapper(
+layout="row"
+layout-align="space-between center"
+layout-wrap)
+  
+  div(
+  flex="100"
+  flex-gt-xs="50"
+  flex-gt-sm="33")
+    
+    page-routes-route(
+    ng-repeat="route in $ctrl.routes"
+    title="route.title"
+    text="route.text"
+    page-id="route.pageId")

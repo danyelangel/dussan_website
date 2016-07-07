@@ -1,0 +1,14 @@
+page-title(
+is-home="$ctrl.pageId==='home'"
+ref="pages/{{$ctrl.pageId}}/title")
+
+page-subtitle(
+ref="pages/{{$ctrl.pageId}}/subtitle")
+
+page-cards(
+ref="pages/{{$ctrl.pageId}}/cards"
+auth-data="$ctrl.authData")
+
+page-routes(
+ng-if="$ctrl.options.showRoutes"
+routes="$ctrl.routes")
