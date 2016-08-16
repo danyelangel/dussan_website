@@ -1,0 +1,11 @@
+{
+  "name": "functions",
+  "description": "Firebase Functions",
+  "dependencies": {
+    "firebase": "^3.1",
+    "firebase-functions": "https://storage.googleapis.com/firebase-preview-drop/node/firebase-functions/firebase-functions-preview.latest.tar.gz",
+    "get-pixels": "^3.3.0",
+    "get-rgba-palette": "^2.0.0",
+    "promise": "^7.1.1"
+  }
+}

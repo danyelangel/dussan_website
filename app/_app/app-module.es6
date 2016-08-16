@@ -3,10 +3,7 @@
   angular
     .module('dussanWebsite', [
       'ui.router',
-      'firebase',
-      'ngFileUpload',
-      'ngMaterial',
-      'angular-medium-editor',
+      'webcat',
       'app.components',
       'app.page'
     ]);

@@ -1,9 +1,7 @@
 firedux(
 ng-init="items={}"
-fd-object-ref="nav"
-fd-on-data="nav=$data"
-layout="row"
-layout-align="center center")
+object-ref="nav"
+on-data="nav=$data")
 
 .nav-wrapper(
 layout="row")
@@ -30,8 +28,8 @@ layout="row")
   div(flex)
 
   firedux(
-  fd-array-ref="nav/menu"
-  fd-on-data="menu=$data")
+  array-ref="nav/menu"
+  on-data="menu=$data")
 
   .menu(
   hide-xs
@@ -51,9 +49,8 @@ layout="row")
           |{{category.title}}
 
       firedux(
-      fd-array-ref="nav/menu/{{category.$id}}/menu"
-      fd-relationship="pages"
-      fd-on-data="items=$data")
+      array-ref="nav/menu/{{category.$id}}/menu"
+      on-data="items=$data")
 
       wc-collapsed(
       is-collapsed="!$ctrl.collapsed"

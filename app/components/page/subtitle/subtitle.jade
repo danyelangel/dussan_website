@@ -1,8 +1,9 @@
 firedux(
-fd-object-ref="{{$ctrl.ref}}"
-fd-on-data="subtitle=$data")
+object-ref="{{$ctrl.ref}}"
+on-data="subtitle=$data")
 
 .subtitle-wrapper(
+ng-if="subtitle.subtitle"
 layout="column"
 layout-align="center center")
   

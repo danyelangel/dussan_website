@@ -23,6 +23,7 @@ page-title {
   .page-title-title {
     font-size: 4em;
     font-weight: 700;
+    font-family: 'Raleway', sans-serif;
     text-shadow: 0 2px 30px rgba(0,0,0,.5);
   }
   @media(max-width: 600px) {
@@ -34,6 +35,7 @@ page-title {
     font-size: 1.5em;
     font-weight: 300;
     text-shadow: 0 2px 8px rgba(0,0,0,.75);
+    max-width: 600px;
   }
   .page-title-title, .page-title-subtitle {
     text-align: center;

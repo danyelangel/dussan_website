@@ -1,20 +1,20 @@
 firedux(
 ng-init="items={}"
-fd-object-ref="nav"
-fd-on-data="nav=$data")
+object-ref="nav"
+on-data="nav=$data")
   
   md-list
 
     firedux(
-    fd-array-ref="nav/menu"
-    fd-on-data="menu=$data")
+    array-ref="nav/menu"
+    on-data="menu=$data")
       
       .category-wrapper(
       ng-repeat="($catIndex, category) in menu")
       
         firedux(
-        fd-array-ref="nav/menu/{{category.$id}}/menu"
-        fd-on-data="items=$data")
+        array-ref="nav/menu/{{category.$id}}/menu"
+        on-data="items=$data")
         
           md-list-item(
           ng-click="!$ctrl.editing[$index] ? collapsed=!collapsed : null")
@@ -82,9 +82,9 @@ fd-on-data="nav=$data")
 
             firedux(
             ng-repeat="item in items"
-            fd-object-ref="pages/{{item.$id}}"
-            fd-on-data="page=$data"
-            fd-remove-on-destroy="$ctrl.removeOnDestroy[$catIndex]")
+            object-ref="pages/{{item.$id}}"
+            on-data="page=$data"
+            remove-on-destroy="$ctrl.removeOnDestroy[$catIndex]")
 
               md-list-item(
               ng-mouseenter="hover=true"

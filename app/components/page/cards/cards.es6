@@ -6,7 +6,8 @@
       templateUrl: 'components/page/cards/cards.html',
       bindings: {
         ref: '@',
-        authData: '<'
+        authData: '<',
+        onReady: '&'
       }
     });
 }());

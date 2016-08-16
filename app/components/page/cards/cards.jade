@@ -1,21 +1,28 @@
 firedux(
-fd-array-ref="{{$ctrl.ref}}"
-fd-on-data="cards=$data")
+ng-init="$ctrl.loaded=0"
+array-ref="{{$ctrl.ref}}"
+on-data="cards=$data;cardLength=cards.length<4?cards.length:4")
 
 .cards-wrapper(
 flex
 layout="row"
-layout-align="center stretch"
+layout-align="center center"
 layout-wrap)
     
+  wc-stretch-button(
+  ng-click="cards.$addFirst()")
+  
   page-cards-card(
   flex="100"
-  ng-repeat="card in cards"
+  ng-repeat-start="card in cards"
   ref="{{$ctrl.ref}}/{{card.$id}}"
   auth-data="$ctrl.authData"
-  is-even="$even")
+  is-even="$even"
+  md-whiteframe="2"
+  on-ready="$ctrl.loaded=$ctrl.loaded+1;$ctrl.loaded===cardLength?$ctrl.onReady():null"
+  on-move-up="cards.$moveUp($index)"
+  on-move-down="cards.$moveDown($index)")
   
-  .add-card(
-  ng-if="$ctrl.authData"
-  ng-click="cards.$add({exists:true})")
-    md-icon|add
+  wc-stretch-button(
+  ng-repeat-end
+  ng-click="cards.$addAfter($index)")

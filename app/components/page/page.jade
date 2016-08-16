@@ -3,12 +3,16 @@ is-home="$ctrl.pageId==='home'"
 ref="pages/{{$ctrl.pageId}}/title")
 
 page-subtitle(
+ng-if="$ctrl.pageId==='home'"
 ref="pages/{{$ctrl.pageId}}/subtitle")
 
 page-cards(
 ref="pages/{{$ctrl.pageId}}/cards"
-auth-data="$ctrl.authData")
+auth-data="$ctrl.authData"
+on-ready="$ctrl.onReady()")
 
 page-routes(
 ng-if="$ctrl.options.showRoutes"
 routes="$ctrl.routes")
+
+wc-loader.fixed(ng-if="!$ctrl.ready")

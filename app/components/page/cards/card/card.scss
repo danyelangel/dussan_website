@@ -1,11 +1,79 @@
 page-cards-card {
   position: relative;
+  .card-wrapper {
+    overflow: hidden;
+    position: relative;
+    background: #212121;
+    color: #fff;
+    @media(min-width: 600px){
+      padding: 2em 0;
+    }
+  }
+  .card-container {
+    width: 100%;
+    max-width: 1024px;
+  }
+  .card-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-position: center;
+    background-size: cover;
+    filter: blur(15px);
+    opacity: .65;
+    transform: scale(1.125);
+    @media(min-width: 600px){
+      background-attachment: fixed;
+    }
+  }
   .card-title {
-    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
     font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .separator {
+    position: relative;
+    opacity: .75;
+    background: #fff;
+    width: 75px;
+    height: 2px;
+  }
+  .card-subtitle {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: .5;
+    margin-bottom: 0;
   }
   .card-text {
-    font-size: 1em;
+    font-size: 1.125em;
+  }
+  wc-media.card-image img {
+    border-radius: 5px;
+  }
+  .subcard {
+    display: block;
+    position: relative;
+    .subcard-wrapper {
+      display: block;
+      margin: .5em;
+      border-radius: 2px;
+      background-attachment: fixed;
+    }
+    .subcard-title {
+      font-size: 1.25em;
+      font-weight: 700;
+      padding: .75em;
+      padding-bottom: .25em;
+    }
+    .subcard-description {
+      padding: 1em;
+      padding-top: 0;
+      color: #BDBDBD;
+    }
   }
   @media(max-width: 600px){
     .card-title {

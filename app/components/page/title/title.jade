@@ -1,6 +1,6 @@
 firedux(
-fd-object-ref="{{$ctrl.ref}}"
-fd-on-data="title=$data")
+object-ref="{{$ctrl.ref}}"
+on-data="title=$data")
 
 .page-title-wrapper(
 layout="column" 
@@ -12,7 +12,8 @@ ng-class="{isHome: $ctrl.isHome}")
     data="title.background"
     is-background="true"
     dimensions="{width:1920,height:1080}"
-    on-update="title.background=$data;title.$save()")
+    on-update="title.background=$data;title.$save()"
+    margin-top="80px")
     
   wc-text.page-title-title(
   data="title.title"
